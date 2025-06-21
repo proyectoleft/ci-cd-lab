@@ -19,6 +19,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Desplegando contenedor...'
+                sh 'docker rm -f app_ci_cd || true' // Elimina el contenedor si existe
                 sh 'docker run -d --name app_ci_cd ci-cd-app'
             }
         }
